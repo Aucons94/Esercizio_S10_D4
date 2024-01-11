@@ -47,4 +47,12 @@ describe("Is CommentList correctly  ", () => {
     const comments = screen.queryAllByTestId("comment");
     expect(comments).toHaveLength(0);
   });
+  it("yes comments ", async () => {
+    render(<App />);
+    const allTheBookCards = screen.getAllByTestId("card");
+    const bookCard = allTheBookCards[0];
+    fireEvent.click(bookCard);
+    const comments = await screen.findAllByTestId("comment");
+    expect(comments).not.toHaveLength(0);
+  });
 });
